@@ -23,6 +23,10 @@ AlphaNumeric   = {Alpha}|{Numeric}
 Sign           = [+-]
 Number        = {Sign}?(([1-9][0-9]*)|0)
 Identifier     = {Alpha}{AlphaNumeric}*{Alpha}*
+
+
+
+
 %%// Identification of tokens
 //Comments
 "co".*          { }
@@ -34,11 +38,17 @@ Identifier     = {Alpha}{AlphaNumeric}*{Alpha}*
 ":="            {Symbol symb= new Symbol(LexicalUnit.ASSIGN,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
 "("	            {Symbol symb= new Symbol(LexicalUnit.LEFT_PARENTHESIS,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
 ")"		        {Symbol symb= new Symbol(LexicalUnit.RIGHT_PARENTHESIS,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
+
+
+
 // OPERATOR
 "-"             {Symbol symb= new Symbol(LexicalUnit.MINUS,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
 "+"             {Symbol symb= new Symbol(LexicalUnit.PLUS,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
 "*"             {Symbol symb= new Symbol(LexicalUnit.TIMES,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
 "/"             {Symbol symb= new Symbol(LexicalUnit.DIVIDE,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
+
+
+
 // If/Else keywords
 "if"	        {Symbol symb= new Symbol(LexicalUnit.IF,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
 "then"          {Symbol symb= new Symbol(LexicalUnit.THEN,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
@@ -48,6 +58,9 @@ Identifier     = {Alpha}{AlphaNumeric}*{Alpha}*
 "not"		    {Symbol symb= new Symbol(LexicalUnit.NOT,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
 "and"		    {Symbol symb= new Symbol(LexicalUnit.AND,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
 "or"		    {Symbol symb= new Symbol(LexicalUnit.OR,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
+
+
+
 //Condition
 "="	            {Symbol symb= new Symbol(LexicalUnit.EQUAL,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
 ">"	            {Symbol symb= new Symbol(LexicalUnit.GREATER,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
@@ -72,7 +85,7 @@ Identifier     = {Alpha}{AlphaNumeric}*{Alpha}*
 
 
 // C99 variable identifier
-{Identifier}  {Symbol symb= new Symbol(LexicalUnit.VARNAME,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
+{Identifier}  {Symbol symb= new Symbol(LexicalUnit.VARNAME,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString()); Identifiers ident = new Identifiers(yyline, yycolumn,new String(yytext())); System.out.println(ident.toString());}
 
 // Ignore other characters
 .             {}
