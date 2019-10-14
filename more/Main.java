@@ -679,7 +679,8 @@ class Main {
 
       if (zzInput == YYEOF && zzStartRead == zzCurrentPos) {
         zzAtEOF = true;
-          { 	return new Symbol(LexicalUnit.END_OF_STREAM, yyline, yycolumn);
+          {     Identifiers.parcoursList();
+	return new Symbol(LexicalUnit.END_OF_STREAM, yyline, yycolumn);
  }
       }
       else {
@@ -690,7 +691,8 @@ class Main {
             // fall through
           case 37: break;
           case 2: 
-            { Symbol symb= new Symbol(LexicalUnit.VARNAME,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString()); Identifiers ident = new Identifiers(yyline, yycolumn,new String(yytext())); System.out.println(ident.toString());
+            { Symbol symb= new Symbol(LexicalUnit.VARNAME,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+                Identifiers ident = new Identifiers(yyline, yycolumn,new String(yytext()));
             } 
             // fall through
           case 38: break;

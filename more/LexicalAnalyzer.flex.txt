@@ -9,6 +9,7 @@
 
 // Return value of the program
 %eofval{
+    Identifiers.parcoursList();
 	return new Symbol(LexicalUnit.END_OF_STREAM, yyline, yycolumn);
 %eofval}
 
@@ -85,7 +86,8 @@ Identifier     = {Alpha}{AlphaNumeric}*{Alpha}*
 
 
 // C99 variable identifier
-{Identifier}  {Symbol symb= new Symbol(LexicalUnit.VARNAME,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString()); Identifiers ident = new Identifiers(yyline, yycolumn,new String(yytext())); System.out.println(ident.toString());}
+{Identifier}  {Symbol symb= new Symbol(LexicalUnit.VARNAME,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+                Identifiers ident = new Identifiers(yyline, yycolumn,new String(yytext()));}
 
 // Ignore other characters
 .             {}
