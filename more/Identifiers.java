@@ -27,7 +27,7 @@ public class Identifiers{
 
     public static void parcoursList(){
         for (Identifiers temp : list) {
-            System.out.print(temp.toString());
+            System.out.print(temp.toString()+"\n");
         }
         }
 
