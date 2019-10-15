@@ -6,12 +6,12 @@ public class Identifiers{
 
 
 
-    private final Object value;
+    private final String value;
     private final int line;
     private final int column;
     public static ArrayList<Identifiers> list = new ArrayList<Identifiers>();
 
-    public Identifiers(int var1, int var2, Object var3) {
+    public Identifiers(int var1, int var2, String var3) {
         this.line = var1 + 1;
         this.column = var2;
         this.value = var3;
@@ -28,21 +28,20 @@ public class Identifiers{
 
     public static ArrayList<Identifiers> removeDuplicates(ArrayList<Identifiers> list)
     {
-        // Create a new ArrayList
         ArrayList<Identifiers> newList = new ArrayList<Identifiers>();
-        // Traverse through the first list
         for (Identifiers element : list) {
-            // If this element is not present in newList
-            // then add it
-            if (!newList.contains(element)) {
+            int i = 0;
+            for (Identifiers temp : newList){
+                String t = element.value;
+                String s = temp.value;
+                if (t.equals(s)) {
+                    i=i+1;
+                }
+            }
+            if (i==0){
                 newList.add(element);
             }
         }
-        for (Identifiers temp : newList) {
-            System.out.print(temp.value+" : "+temp.line+"\n");
-
-        }
-        // return the new list
         return newList;
     }
 
@@ -51,7 +50,7 @@ public class Identifiers{
         ArrayList<Identifiers> newlist = new ArrayList<Identifiers>();
         newlist = removeDuplicates(list);
         for (Identifiers temp : newlist) {
-            //System.out.print(temp.value+" : "+temp.line+"\n");
+            System.out.print(temp.value+" : "+temp.line+"\n");
 
             }
         }

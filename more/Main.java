@@ -692,7 +692,7 @@ class Main {
           case 37: break;
           case 2: 
             { Symbol symb= new Symbol(LexicalUnit.VARNAME,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
-                Identifiers ident = new Identifiers(yyline, yycolumn,new String(yytext()));
+                Identifiers ident = new Identifiers(yyline, yycolumn, yytext());
             } 
             // fall through
           case 38: break;
