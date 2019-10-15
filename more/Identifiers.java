@@ -25,10 +25,35 @@ public class Identifiers{
             return value+"\t : "+line;
     }
 
-    public static void parcoursList(){
-        for (Identifiers temp : list) {
-            System.out.print(temp.toString()+"\n");
+
+    public static ArrayList<Identifiers> removeDuplicates(ArrayList<Identifiers> list)
+    {
+        // Create a new ArrayList
+        ArrayList<Identifiers> newList = new ArrayList<Identifiers>();
+        // Traverse through the first list
+        for (Identifiers element : list) {
+            // If this element is not present in newList
+            // then add it
+            if (!newList.contains(element)) {
+                newList.add(element);
+            }
         }
+        for (Identifiers temp : newList) {
+            System.out.print(temp.value+" : "+temp.line+"\n");
+
+        }
+        // return the new list
+        return newList;
+    }
+
+
+    public static void parcoursList(){
+        ArrayList<Identifiers> newlist = new ArrayList<Identifiers>();
+        newlist = removeDuplicates(list);
+        for (Identifiers temp : newlist) {
+            //System.out.print(temp.value+" : "+temp.line+"\n");
+
+            }
         }
 
-    }
+}
