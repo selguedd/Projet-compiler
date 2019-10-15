@@ -49,8 +49,9 @@ public class Identifiers{
     public static void parcoursList(){
         ArrayList<Identifiers> newlist = new ArrayList<Identifiers>();
         newlist = removeDuplicates(list);
+        System.out.print("Identifiers \n");
         for (Identifiers temp : newlist) {
-            System.out.print(temp.value+" : "+temp.line+"\n");
+            System.out.print(temp.value+" "+temp.line+"\n");
 
             }
         }
