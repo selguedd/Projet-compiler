@@ -6,19 +6,21 @@ public class Identifiers{
 
 
 
-    private final Object value;
+    private final String value;
     private final int line;
     private final int column;
-    public static ArrayList<Identifiers> list = new ArrayList<Identifiers>();
+    public static ArrayList<Identifiers> list = new ArrayList<>();
 
-    public Identifiers(int var1, int var2, Object var3) {
+    public Identifiers(int var1, int var2, String var3) {
         this.line = var1 + 1;
         this.column = var2;
         this.value = var3;
-        list.add(this);
+        checkInList(this);
     }
 
-
+    public String getValue(){
+        return value;
+    }
 
     public String toString(){
             final String value	= this.value != null? this.value.toString() : "null";
@@ -26,9 +28,22 @@ public class Identifiers{
     }
 
     public static void parcoursList(){
-        for (Identifiers temp : list) {
+        for(Identifiers temp : list) {
             System.out.print(temp.toString()+"\n");
         }
         }
+
+    
+    private void checkInList(Identifiers var){
+        int counter=0;
+        for(Identifiers temp : list) {
+           if (temp.getValue().equals(var.getValue())) {
+               counter=-1;
+           }
+        }
+        if (counter==0) {
+            list.add(var); 
+        }
+    }
 
     }
