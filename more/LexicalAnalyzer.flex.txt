@@ -87,7 +87,7 @@ Comments       = "CO"([^*]|[\r\n])*"CO"
 
 // C99 variable identifier
 {Identifier}  {Symbol symb= new Symbol(LexicalUnit.VARNAME,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
-                Identifiers ident = new Identifiers(yyline, yycolumn,new String(yytext()));}
+                Identifiers ident = new Identifiers(yyline, yycolumn, yytext());}
 
 // Ignore other characters
 .             {}

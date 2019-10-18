@@ -27,10 +27,16 @@ public class Identifiers{
             return value+"\t : "+line;
     }
 
+
+
+
+
     public static void parcoursList(){
-        for(Identifiers temp : list) {
-            System.out.print(temp.toString()+"\n");
-        }
+        System.out.print("Identifiers \n");
+        for (Identifiers temp : list) {
+            System.out.print(temp.value+" "+temp.line+"\n");
+
+            }
         }
 
     
@@ -47,3 +53,6 @@ public class Identifiers{
     }
 
     }
+
+
+
