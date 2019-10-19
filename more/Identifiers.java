@@ -32,14 +32,15 @@ public class Identifiers{
 
 
     public static void parcoursList(){
-        System.out.print("Identifiers \n");
-        for (Identifiers temp : list) {
-            System.out.print(temp.value+" "+temp.line+"\n");
-
+        if (!list.isEmpty()){
+            System.out.print("Identifiers \n");
+            for (Identifiers temp : list) {
+                System.out.print(temp.value+" "+temp.line+"\n");
             }
         }
+        }
 
-    
+
     private void checkInList(Identifiers var){
         int counter=0;
         for(Identifiers temp : list) {

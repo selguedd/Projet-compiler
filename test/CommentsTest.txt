@@ -1,0 +1,11 @@
+co ceci est un commentaire
+CO ceci est un commentaire CO
+CO ceci est un commentaire
+ceci aussi
+ceci aussi
+ceci aussi
+CO
+coco ceci est un commentaire
+co co ceci est un commentaire
+
+copilote = 11;
