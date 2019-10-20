@@ -20,9 +20,7 @@ AlphaLowerCase = [a-z]
 Alpha          = {AlphaUpperCase}|{AlphaLowerCase}
 Numeric        = [0-9]
 AlphaNumeric   = {Alpha}|{Numeric}
-
-Sign           = [+-]
-Number         = {Sign}?(([1-9][0-9]*)|0)
+Number         = (([1-9][0-9]*)|0)
 Identifier     = {Alpha}{AlphaNumeric}*{Alpha}*
 Comments       = "CO"([^*]|[\r\n])*"CO"
 
@@ -32,6 +30,7 @@ Comments       = "CO"([^*]|[\r\n])*"CO"
 //Comments
 "co".*          { }
 {Comments}      { }
+"\n"            { }
 "begin"		    {Symbol symb= new Symbol(LexicalUnit.BEG,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
 "end"	        {Symbol symb= new Symbol(LexicalUnit.END,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
 {Number}	    {Symbol symb= new Symbol(LexicalUnit.NUMBER,yyline, yycolumn,new Integer(yytext()));System.out.println(symb.toString());}
