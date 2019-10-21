@@ -9,3 +9,6 @@ coco ceci est un commentaire
 co co ceci est un commentaire
 
 copilote = 11;
+
+CO lzlzlzlzl CO COsakjk
+COM=1;

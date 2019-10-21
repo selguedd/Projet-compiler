@@ -15,6 +15,7 @@ class Main {
 
   /** lexical states */
   public static final int YYINITIAL = 0;
+  public static final int COMMENT = 2;
 
   /**
    * ZZ_LEXSTATE[l] is the state in the DFA for the lexical state l
@@ -23,18 +24,18 @@ class Main {
    * l is of the form l = 2*k, k a non negative integer
    */
   private static final int ZZ_LEXSTATE[] = { 
-     0, 0
+     0,  0,  1, 1
   };
 
   /** 
    * Translates characters to character classes
    */
   private static final String ZZ_CMAP_PACKED = 
-    "\12\0\1\12\1\7\1\7\1\7\32\0\1\24\1\25\1\6\1\27"+
-    "\1\0\1\26\1\0\1\30\1\2\11\3\1\22\1\21\1\41\1\23"+
-    "\1\40\2\0\2\1\1\4\13\1\1\5\13\1\6\0\1\36\1\13"+
-    "\1\10\1\20\1\14\1\31\1\15\1\33\1\16\2\1\1\34\1\43"+
-    "\1\17\1\11\1\45\1\1\1\37\1\35\1\32\2\1\1\42\1\1"+
+    "\12\0\1\6\1\7\1\7\1\7\32\0\1\23\1\24\1\27\1\26"+
+    "\1\0\1\25\1\0\1\30\1\2\11\3\1\21\1\20\1\41\1\22"+
+    "\1\40\2\0\2\1\1\10\13\1\1\11\13\1\6\0\1\36\1\12"+
+    "\1\4\1\17\1\13\1\31\1\14\1\33\1\15\2\1\1\34\1\43"+
+    "\1\16\1\5\1\45\1\1\1\37\1\35\1\32\2\1\1\42\1\1"+
     "\1\44\1\1\12\0\1\7\u1fa2\0\1\7\1\7\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
 
   /** 
@@ -48,17 +49,17 @@ class Main {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\0\1\1\1\2\2\3\1\2\1\4\1\5\7\2"+
-    "\1\6\1\1\1\7\1\10\1\11\1\12\1\13\1\14"+
-    "\4\2\1\15\1\16\3\2\1\1\1\17\1\2\1\20"+
-    "\2\2\1\21\1\2\1\22\1\23\1\24\2\2\1\25"+
-    "\3\2\1\26\1\27\2\2\1\0\2\2\1\30\1\2"+
-    "\1\31\1\32\2\2\1\33\3\2\1\0\1\1\3\2"+
-    "\1\34\1\35\1\36\1\37\2\2\1\1\1\40\1\41"+
-    "\1\2\1\42\1\43\2\2\1\44";
+    "\2\0\1\1\1\2\2\3\2\2\1\4\6\2\1\5"+
+    "\1\1\1\6\1\7\1\10\1\11\1\12\1\13\1\14"+
+    "\4\2\1\15\1\16\2\2\2\1\1\17\1\20\1\2"+
+    "\1\21\2\2\1\22\1\2\1\23\1\24\1\25\2\2"+
+    "\1\26\3\2\1\27\1\30\2\2\1\31\1\2\1\32"+
+    "\1\2\1\33\1\34\2\2\1\35\6\2\1\36\1\37"+
+    "\1\40\1\41\2\2\1\42\1\43\1\2\1\44\1\45"+
+    "\2\2\1\46";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[86];
+    int [] result = new int[84];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -83,20 +84,20 @@ class Main {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\46\0\114\0\46\0\162\0\230\0\46\0\46"+
-    "\0\276\0\344\0\u010a\0\u0130\0\u0156\0\u017c\0\u01a2\0\46"+
-    "\0\u01c8\0\46\0\46\0\46\0\46\0\46\0\u01ee\0\u0214"+
+    "\0\0\0\46\0\114\0\162\0\114\0\230\0\276\0\344"+
+    "\0\114\0\u010a\0\u0130\0\u0156\0\u017c\0\u01a2\0\u01c8\0\114"+
+    "\0\u01ee\0\114\0\114\0\114\0\114\0\114\0\114\0\u0214"+
     "\0\u023a\0\u0260\0\u0286\0\u02ac\0\u02d2\0\u02f8\0\u031e\0\u0344"+
-    "\0\u036a\0\114\0\u0390\0\114\0\u03b6\0\u03dc\0\114\0\u0402"+
-    "\0\114\0\46\0\46\0\u0428\0\u044e\0\114\0\u0474\0\u049a"+
-    "\0\u04c0\0\46\0\46\0\u04e6\0\u050c\0\u0532\0\u0558\0\u057e"+
-    "\0\u05a4\0\u05ca\0\114\0\114\0\u05f0\0\u0616\0\114\0\u063c"+
-    "\0\u0662\0\u0688\0\u06ae\0\u0344\0\u06d4\0\u06fa\0\u0720\0\114"+
-    "\0\114\0\114\0\114\0\u0746\0\u076c\0\u0532\0\114\0\114"+
-    "\0\u0792\0\114\0\114\0\u07b8\0\u07de\0\114";
+    "\0\u036a\0\u0390\0\162\0\162\0\u03b6\0\162\0\u03dc\0\u0402"+
+    "\0\162\0\u0428\0\162\0\114\0\114\0\u044e\0\u0474\0\162"+
+    "\0\u049a\0\u04c0\0\u04e6\0\114\0\114\0\u050c\0\u0532\0\114"+
+    "\0\u0558\0\u057e\0\u05a4\0\162\0\162\0\u05ca\0\u05f0\0\162"+
+    "\0\u0616\0\u063c\0\u0662\0\u0688\0\u06ae\0\u06d4\0\162\0\162"+
+    "\0\162\0\162\0\u06fa\0\u0720\0\162\0\162\0\u0746\0\162"+
+    "\0\162\0\u076c\0\u0792\0\162";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[86];
+    int [] result = new int[84];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -119,82 +120,68 @@ class Main {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\2\1\3\1\4\1\5\1\6\1\3\1\7\1\10"+
-    "\1\11\1\12\1\2\1\13\1\14\1\3\1\15\1\16"+
-    "\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\26"+
-    "\1\27\1\30\1\31\3\3\1\32\1\33\1\34\1\35"+
-    "\1\36\2\3\1\37\47\0\5\3\2\0\2\3\1\0"+
-    "\6\3\10\0\7\3\2\0\4\3\2\0\2\5\43\0"+
-    "\4\3\1\40\2\0\2\3\1\0\6\3\10\0\7\3"+
-    "\2\0\4\3\1\0\5\3\2\0\1\3\1\41\1\0"+
-    "\6\3\10\0\7\3\2\0\4\3\1\0\5\3\2\0"+
-    "\2\3\1\0\6\3\10\0\6\3\1\42\2\0\4\3"+
-    "\1\0\5\3\2\0\2\3\1\0\1\3\1\43\4\3"+
-    "\10\0\7\3\2\0\2\3\1\44\1\3\1\0\5\3"+
-    "\2\0\2\3\1\0\4\3\1\45\1\3\10\0\3\3"+
-    "\1\46\3\3\2\0\4\3\1\0\5\3\2\0\2\3"+
-    "\1\0\6\3\10\0\1\47\6\3\2\0\4\3\1\0"+
-    "\5\3\2\0\1\3\1\50\1\0\6\3\10\0\7\3"+
-    "\2\0\4\3\1\0\5\3\2\0\1\3\1\51\1\0"+
-    "\6\3\10\0\7\3\2\0\4\3\23\0\1\52\45\0"+
-    "\1\53\23\0\5\3\2\0\1\3\1\54\1\0\6\3"+
-    "\10\0\6\3\1\55\2\0\4\3\1\0\5\3\2\0"+
-    "\1\3\1\56\1\0\6\3\10\0\2\3\1\57\4\3"+
-    "\2\0\4\3\1\0\5\3\2\0\2\3\1\0\4\3"+
-    "\1\60\1\3\10\0\7\3\2\0\4\3\1\0\5\3"+
-    "\2\0\2\3\1\0\1\3\1\61\4\3\10\0\7\3"+
-    "\2\0\4\3\23\0\1\62\45\0\1\63\23\0\5\3"+
-    "\2\0\2\3\1\0\6\3\10\0\2\3\1\64\4\3"+
-    "\2\0\4\3\1\0\5\3\2\0\2\3\1\0\6\3"+
-    "\10\0\6\3\1\65\2\0\4\3\1\66\3\40\1\67"+
-    "\1\40\1\0\1\66\2\40\1\66\6\40\10\66\7\40"+
-    "\2\66\4\40\7\41\1\0\2\41\1\0\33\41\1\0"+
-    "\5\3\2\0\2\3\1\0\2\3\1\70\3\3\10\0"+
-    "\7\3\2\0\4\3\1\0\5\3\2\0\2\3\1\0"+
-    "\5\3\1\71\10\0\7\3\2\0\4\3\1\0\5\3"+
-    "\2\0\2\3\1\0\6\3\10\0\4\3\1\72\2\3"+
-    "\2\0\4\3\1\0\5\3\2\0\2\3\1\0\6\3"+
-    "\10\0\1\3\1\73\5\3\2\0\4\3\1\0\5\3"+
-    "\2\0\2\3\1\0\6\3\10\0\6\3\1\74\2\0"+
-    "\4\3\1\0\5\3\2\0\1\3\1\75\1\0\6\3"+
-    "\10\0\7\3\2\0\4\3\1\0\5\3\2\0\2\3"+
-    "\1\0\1\3\1\76\4\3\10\0\7\3\2\0\4\3"+
-    "\1\0\5\3\2\0\2\3\1\0\5\3\1\77\10\0"+
-    "\7\3\2\0\4\3\1\0\5\3\2\0\2\3\1\0"+
-    "\6\3\10\0\5\3\1\100\1\3\2\0\4\3\1\0"+
-    "\5\3\2\0\2\3\1\0\3\3\1\101\2\3\10\0"+
-    "\7\3\2\0\4\3\1\0\5\3\2\0\2\3\1\0"+
-    "\3\3\1\102\2\3\10\0\7\3\2\0\4\3\4\66"+
-    "\1\103\1\66\1\0\40\66\3\40\1\67\1\104\1\0"+
-    "\1\66\2\40\1\66\6\40\10\66\7\40\2\66\4\40"+
-    "\1\0\5\3\2\0\2\3\1\0\3\3\1\105\2\3"+
-    "\10\0\7\3\2\0\4\3\1\0\5\3\2\0\2\3"+
-    "\1\0\3\3\1\106\2\3\10\0\7\3\2\0\1\107"+
-    "\3\3\1\0\5\3\2\0\2\3\1\0\1\3\1\110"+
-    "\4\3\10\0\7\3\2\0\4\3\1\0\5\3\2\0"+
-    "\2\3\1\0\6\3\10\0\7\3\2\0\1\3\1\111"+
-    "\2\3\1\0\5\3\2\0\2\3\1\0\4\3\1\112"+
-    "\1\3\10\0\7\3\2\0\4\3\1\0\5\3\2\0"+
-    "\2\3\1\0\5\3\1\113\10\0\7\3\2\0\4\3"+
-    "\1\0\5\3\2\0\2\3\1\0\6\3\10\0\3\3"+
-    "\1\114\3\3\2\0\4\3\1\0\5\3\2\0\2\3"+
-    "\1\0\4\3\1\115\1\3\10\0\7\3\2\0\4\3"+
-    "\4\66\1\103\1\116\1\0\37\66\1\0\5\3\2\0"+
-    "\2\3\1\0\4\3\1\117\1\3\10\0\7\3\2\0"+
-    "\4\3\1\0\5\3\2\0\2\3\1\0\6\3\10\0"+
-    "\1\120\6\3\2\0\4\3\1\0\5\3\2\0\2\3"+
-    "\1\0\6\3\10\0\2\3\1\121\4\3\2\0\4\3"+
-    "\1\0\5\3\2\0\2\3\1\0\1\3\1\122\4\3"+
-    "\10\0\7\3\2\0\4\3\1\0\5\3\2\0\2\3"+
-    "\1\0\6\3\10\0\1\3\1\123\5\3\2\0\4\3"+
-    "\1\0\5\3\2\0\2\3\1\0\3\3\1\124\2\3"+
-    "\10\0\7\3\2\0\4\3\1\0\5\3\2\0\2\3"+
-    "\1\0\6\3\10\0\3\3\1\125\3\3\2\0\4\3"+
-    "\1\0\5\3\2\0\2\3\1\0\1\3\1\126\4\3"+
-    "\10\0\7\3\2\0\4\3";
+    "\1\3\1\4\1\5\1\6\1\7\1\10\1\3\1\11"+
+    "\1\12\1\4\1\13\1\14\1\4\1\15\1\16\1\17"+
+    "\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27"+
+    "\1\30\1\31\1\32\3\4\1\33\1\34\1\35\1\36"+
+    "\1\37\2\4\1\40\7\3\1\11\1\41\35\3\47\0"+
+    "\5\4\2\0\10\4\11\0\7\4\2\0\4\4\2\0"+
+    "\2\6\43\0\4\4\1\42\2\0\10\4\11\0\7\4"+
+    "\2\0\4\4\1\0\5\4\2\0\10\4\11\0\6\4"+
+    "\1\43\2\0\4\4\1\0\5\4\2\0\1\4\1\44"+
+    "\6\4\11\0\7\4\2\0\4\4\1\0\5\4\2\0"+
+    "\3\4\1\45\4\4\11\0\7\4\2\0\2\4\1\46"+
+    "\1\4\1\0\5\4\2\0\6\4\1\47\1\4\11\0"+
+    "\3\4\1\50\3\4\2\0\4\4\1\0\5\4\2\0"+
+    "\10\4\11\0\1\51\6\4\2\0\4\4\1\0\4\4"+
+    "\1\52\2\0\10\4\11\0\7\4\2\0\4\4\1\0"+
+    "\4\4\1\53\2\0\10\4\11\0\7\4\2\0\4\4"+
+    "\22\0\1\54\45\0\1\55\24\0\4\4\1\56\2\0"+
+    "\10\4\11\0\6\4\1\57\2\0\4\4\1\0\4\4"+
+    "\1\60\2\0\10\4\11\0\2\4\1\61\4\4\2\0"+
+    "\4\4\1\0\5\4\2\0\6\4\1\62\1\4\11\0"+
+    "\7\4\2\0\4\4\1\0\5\4\2\0\3\4\1\63"+
+    "\4\4\11\0\7\4\2\0\4\4\22\0\1\64\45\0"+
+    "\1\65\24\0\5\4\2\0\10\4\11\0\2\4\1\66"+
+    "\4\4\2\0\4\4\1\0\5\4\2\0\10\4\11\0"+
+    "\6\4\1\67\2\0\4\4\11\0\1\70\34\0\6\42"+
+    "\2\0\36\42\1\0\5\4\2\0\4\4\1\71\3\4"+
+    "\11\0\7\4\2\0\4\4\1\0\5\4\2\0\7\4"+
+    "\1\72\11\0\7\4\2\0\4\4\1\0\5\4\2\0"+
+    "\10\4\11\0\4\4\1\73\2\4\2\0\4\4\1\0"+
+    "\5\4\2\0\10\4\11\0\1\4\1\74\5\4\2\0"+
+    "\4\4\1\0\5\4\2\0\10\4\11\0\6\4\1\75"+
+    "\2\0\4\4\1\0\4\4\1\76\2\0\10\4\11\0"+
+    "\7\4\2\0\4\4\1\0\5\4\2\0\3\4\1\77"+
+    "\4\4\11\0\7\4\2\0\4\4\1\0\5\4\2\0"+
+    "\7\4\1\100\11\0\7\4\2\0\4\4\1\0\5\4"+
+    "\2\0\10\4\11\0\5\4\1\101\1\4\2\0\4\4"+
+    "\1\0\5\4\2\0\5\4\1\102\2\4\11\0\7\4"+
+    "\2\0\4\4\1\0\5\4\2\0\5\4\1\103\2\4"+
+    "\11\0\7\4\2\0\4\4\1\0\5\4\2\0\5\4"+
+    "\1\104\2\4\11\0\7\4\2\0\4\4\1\0\5\4"+
+    "\2\0\5\4\1\105\2\4\11\0\7\4\2\0\1\106"+
+    "\3\4\1\0\5\4\2\0\3\4\1\107\4\4\11\0"+
+    "\7\4\2\0\4\4\1\0\5\4\2\0\10\4\11\0"+
+    "\7\4\2\0\1\4\1\110\2\4\1\0\5\4\2\0"+
+    "\6\4\1\111\1\4\11\0\7\4\2\0\4\4\1\0"+
+    "\5\4\2\0\7\4\1\112\11\0\7\4\2\0\4\4"+
+    "\1\0\5\4\2\0\10\4\11\0\3\4\1\113\3\4"+
+    "\2\0\4\4\1\0\5\4\2\0\6\4\1\114\1\4"+
+    "\11\0\7\4\2\0\4\4\1\0\5\4\2\0\6\4"+
+    "\1\115\1\4\11\0\7\4\2\0\4\4\1\0\5\4"+
+    "\2\0\10\4\11\0\1\116\6\4\2\0\4\4\1\0"+
+    "\5\4\2\0\10\4\11\0\2\4\1\117\4\4\2\0"+
+    "\4\4\1\0\5\4\2\0\3\4\1\120\4\4\11\0"+
+    "\7\4\2\0\4\4\1\0\5\4\2\0\10\4\11\0"+
+    "\1\4\1\121\5\4\2\0\4\4\1\0\5\4\2\0"+
+    "\5\4\1\122\2\4\11\0\7\4\2\0\4\4\1\0"+
+    "\5\4\2\0\10\4\11\0\3\4\1\123\3\4\2\0"+
+    "\4\4\1\0\5\4\2\0\3\4\1\124\4\4\11\0"+
+    "\7\4\2\0\4\4";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[2052];
+    int [] result = new int[1976];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -232,12 +219,12 @@ class Main {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\0\1\11\1\1\1\11\2\1\2\11\7\1\1\11"+
-    "\1\1\5\11\23\1\2\11\6\1\2\11\2\1\1\0"+
-    "\14\1\1\0\23\1";
+    "\2\0\1\11\1\1\1\11\3\1\1\11\6\1\1\11"+
+    "\1\1\6\11\24\1\2\11\6\1\2\11\2\1\1\11"+
+    "\34\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[86];
+    int [] result = new int[84];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -689,183 +676,193 @@ class Main {
             { 
             } 
             // fall through
-          case 37: break;
+          case 39: break;
           case 2: 
             { Symbol symb= new Symbol(LexicalUnit.VARNAME,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
                 Identifiers ident = new Identifiers(yyline, yycolumn, yytext());
             } 
             // fall through
-          case 38: break;
+          case 40: break;
           case 3: 
             { Symbol symb= new Symbol(LexicalUnit.NUMBER,yyline, yycolumn,new Integer(yytext()));System.out.println(symb.toString());
             } 
             // fall through
-          case 39: break;
+          case 41: break;
           case 4: 
-            { Symbol symb= new Symbol(LexicalUnit.TIMES,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
-            } 
-            // fall through
-          case 40: break;
-          case 5: 
             { System.out.print(yytext());
             } 
             // fall through
-          case 41: break;
-          case 6: 
+          case 42: break;
+          case 5: 
             { Symbol symb= new Symbol(LexicalUnit.SEMICOLON,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
-          case 42: break;
-          case 7: 
+          case 43: break;
+          case 6: 
             { Symbol symb= new Symbol(LexicalUnit.EQUAL,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
-          case 43: break;
-          case 8: 
+          case 44: break;
+          case 7: 
             { Symbol symb= new Symbol(LexicalUnit.LEFT_PARENTHESIS,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
-          case 44: break;
-          case 9: 
+          case 45: break;
+          case 8: 
             { Symbol symb= new Symbol(LexicalUnit.RIGHT_PARENTHESIS,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
-          case 45: break;
-          case 10: 
+          case 46: break;
+          case 9: 
             { Symbol symb= new Symbol(LexicalUnit.MINUS,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
-          case 46: break;
-          case 11: 
+          case 47: break;
+          case 10: 
             { Symbol symb= new Symbol(LexicalUnit.PLUS,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
-          case 47: break;
+          case 48: break;
+          case 11: 
+            { Symbol symb= new Symbol(LexicalUnit.TIMES,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            } 
+            // fall through
+          case 49: break;
           case 12: 
             { Symbol symb= new Symbol(LexicalUnit.DIVIDE,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
-          case 48: break;
+          case 50: break;
           case 13: 
             { Symbol symb= new Symbol(LexicalUnit.GREATER,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
-          case 49: break;
+          case 51: break;
           case 14: 
             { Symbol symb= new Symbol(LexicalUnit.SMALLER,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
-          case 50: break;
+          case 52: break;
           case 15: 
             { Symbol symb= new Symbol(LexicalUnit.OR,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
-          case 51: break;
-          case 16: 
-            { Symbol symb= new Symbol(LexicalUnit.BY,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
-            } 
-            // fall through
-          case 52: break;
-          case 17: 
-            { Symbol symb= new Symbol(LexicalUnit.IF,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
-            } 
-            // fall through
           case 53: break;
-          case 18: 
-            { Symbol symb= new Symbol(LexicalUnit.DO,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+          case 16: 
+            { yybegin(COMMENT);
             } 
             // fall through
           case 54: break;
-          case 19: 
-            { Symbol symb= new Symbol(LexicalUnit.ASSIGN,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+          case 17: 
+            { Symbol symb= new Symbol(LexicalUnit.BY,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
           case 55: break;
-          case 20: 
-            { Symbol symb= new Symbol(LexicalUnit.DIFFERENT,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+          case 18: 
+            { Symbol symb= new Symbol(LexicalUnit.IF,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
           case 56: break;
-          case 21: 
-            { Symbol symb= new Symbol(LexicalUnit.TO,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+          case 19: 
+            { Symbol symb= new Symbol(LexicalUnit.DO,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
           case 57: break;
-          case 22: 
-            { Symbol symb= new Symbol(LexicalUnit.GREATER_EQUAL,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+          case 20: 
+            { Symbol symb= new Symbol(LexicalUnit.ASSIGN,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
           case 58: break;
-          case 23: 
-            { Symbol symb= new Symbol(LexicalUnit.SMALLER_EQUAL,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+          case 21: 
+            { Symbol symb= new Symbol(LexicalUnit.DIFFERENT,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
           case 59: break;
-          case 24: 
-            { Symbol symb= new Symbol(LexicalUnit.END,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+          case 22: 
+            { Symbol symb= new Symbol(LexicalUnit.TO,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
           case 60: break;
-          case 25: 
-            { Symbol symb= new Symbol(LexicalUnit.NOT,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+          case 23: 
+            { Symbol symb= new Symbol(LexicalUnit.GREATER_EQUAL,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
           case 61: break;
-          case 26: 
-            { Symbol symb= new Symbol(LexicalUnit.FOR,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+          case 24: 
+            { Symbol symb= new Symbol(LexicalUnit.SMALLER_EQUAL,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
           case 62: break;
-          case 27: 
-            { Symbol symb= new Symbol(LexicalUnit.AND,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+          case 25: 
+            { yybegin(YYINITIAL);
             } 
             // fall through
           case 63: break;
-          case 28: 
-            { Symbol symb= new Symbol(LexicalUnit.ELSE,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+          case 26: 
+            { Symbol symb= new Symbol(LexicalUnit.END,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
           case 64: break;
-          case 29: 
-            { Symbol symb= new Symbol(LexicalUnit.FROM,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+          case 27: 
+            { Symbol symb= new Symbol(LexicalUnit.NOT,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
           case 65: break;
-          case 30: 
-            { Symbol symb= new Symbol(LexicalUnit.THEN,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+          case 28: 
+            { Symbol symb= new Symbol(LexicalUnit.FOR,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
           case 66: break;
-          case 31: 
-            { Symbol symb= new Symbol(LexicalUnit.READ,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+          case 29: 
+            { Symbol symb= new Symbol(LexicalUnit.AND,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
           case 67: break;
-          case 32: 
-            { Symbol symb= new Symbol(LexicalUnit.BEG,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+          case 30: 
+            { Symbol symb= new Symbol(LexicalUnit.ELSE,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
           case 68: break;
-          case 33: 
-            { Symbol symb= new Symbol(LexicalUnit.ENDIF,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+          case 31: 
+            { Symbol symb= new Symbol(LexicalUnit.FROM,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
           case 69: break;
-          case 34: 
-            { Symbol symb= new Symbol(LexicalUnit.WHILE,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+          case 32: 
+            { Symbol symb= new Symbol(LexicalUnit.THEN,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
           case 70: break;
-          case 35: 
-            { Symbol symb= new Symbol(LexicalUnit.PRINT,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+          case 33: 
+            { Symbol symb= new Symbol(LexicalUnit.READ,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
           case 71: break;
-          case 36: 
-            { Symbol symb= new Symbol(LexicalUnit.ENDWHILE,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+          case 34: 
+            { Symbol symb= new Symbol(LexicalUnit.BEG,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
             } 
             // fall through
           case 72: break;
+          case 35: 
+            { Symbol symb= new Symbol(LexicalUnit.ENDIF,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            } 
+            // fall through
+          case 73: break;
+          case 36: 
+            { Symbol symb= new Symbol(LexicalUnit.WHILE,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            } 
+            // fall through
+          case 74: break;
+          case 37: 
+            { Symbol symb= new Symbol(LexicalUnit.PRINT,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            } 
+            // fall through
+          case 75: break;
+          case 38: 
+            { Symbol symb= new Symbol(LexicalUnit.ENDWHILE,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            } 
+            // fall through
+          case 76: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }

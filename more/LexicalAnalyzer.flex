@@ -4,7 +4,7 @@
 %unicode		//Use unicode
 %line         	//Use line counter (yyline variable)
 %column       	//Use character counter by line (yycolumn variable)
-%type Symbol  //Says that the return type is Symbol
+%type Symbol    //Says that the return type is Symbol
 %standalone		//Standalone mode
 
 // Return value of the program
@@ -22,15 +22,18 @@ Numeric        = [0-9]
 AlphaNumeric   = {Alpha}|{Numeric}
 Number         = (([1-9][0-9]*)|0)
 Identifier     = {Alpha}{AlphaNumeric}*{Alpha}*
-Comments       = "CO"([^*]|[\r\n])*"CO"
 
+//Declare exclusive states
+%xstate YYINITIAL, COMMENT
 
+%% //Identification of tokens
 
-%%// Identification of tokens
-//Comments
-"co".*          { }
-{Comments}      { }
-"\n"            { }
+//switch between mode, default : YYINITIAL
+
+<YYINITIAL> {
+"co".*          {}
+"\n"            {}
+"CO"            {yybegin(COMMENT);}
 "begin"		    {Symbol symb= new Symbol(LexicalUnit.BEG,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
 "end"	        {Symbol symb= new Symbol(LexicalUnit.END,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
 {Number}	    {Symbol symb= new Symbol(LexicalUnit.NUMBER,yyline, yycolumn,new Integer(yytext()));System.out.println(symb.toString());}
@@ -79,8 +82,7 @@ Comments       = "CO"([^*]|[\r\n])*"CO"
 "to"            {Symbol symb= new Symbol(LexicalUnit.TO,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
 // functions
 "print"         {Symbol symb= new Symbol(LexicalUnit.PRINT,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
-"read"		    {Symbol symb= new Symbol(LexicalUnit.READ,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}  
-
+"read"		    {Symbol symb= new Symbol(LexicalUnit.READ,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
 
 
 
@@ -90,3 +92,15 @@ Comments       = "CO"([^*]|[\r\n])*"CO"
 
 // Ignore other characters
 .             {}
+}
+
+<COMMENT>      {
+
+  <COMMENT>"CO" { yybegin(YYINITIAL); }
+  <COMMENT>\n   {}
+  <COMMENT>.    {}
+}
+
+
+
+
