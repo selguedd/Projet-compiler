@@ -21,7 +21,10 @@ Alpha          = {AlphaUpperCase}|{AlphaLowerCase}
 Numeric        = [0-9]
 AlphaNumeric   = {Alpha}|{Numeric}
 Number         = (([1-9][0-9]*)|0)
+BadNumber      = 0*[0−9]*
 Identifier     = {Alpha}{AlphaNumeric}*{Alpha}*
+CommentLine    ="co".*
+Endofline      ="\n"
 
 //Declare exclusive states
 %xstate YYINITIAL, COMMENT
@@ -31,12 +34,13 @@ Identifier     = {Alpha}{AlphaNumeric}*{Alpha}*
 //switch between mode, default : YYINITIAL
 
 <YYINITIAL> {
-"co".*          {}
-"\n"            {}
+{CommentLine}   {}
+{Endofline}     {}
 "CO"            {yybegin(COMMENT);}
 "begin"		    {Symbol symb= new Symbol(LexicalUnit.BEG,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
 "end"	        {Symbol symb= new Symbol(LexicalUnit.END,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
 {Number}	    {Symbol symb= new Symbol(LexicalUnit.NUMBER,yyline, yycolumn,new Integer(yytext()));System.out.println(symb.toString());}
+{BadNumber}	    {Symbol symb= new Symbol(LexicalUnit.NUMBER,yyline, yycolumn,new Integer(yytext()));System.out.println(symb.toString());}
 ";"             {Symbol symb= new Symbol(LexicalUnit.SEMICOLON,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
 ":="            {Symbol symb= new Symbol(LexicalUnit.ASSIGN,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
 "("	            {Symbol symb= new Symbol(LexicalUnit.LEFT_PARENTHESIS,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());}
@@ -96,9 +100,9 @@ Identifier     = {Alpha}{AlphaNumeric}*{Alpha}*
 
 <COMMENT>      {
 
-  <COMMENT>"CO" { yybegin(YYINITIAL); }
-  <COMMENT>\n   {}
-  <COMMENT>.    {}
+  "CO"         {yybegin(YYINITIAL);}
+  <<EOF>>      {System.out.println("the comment is never closed.");yybegin(YYINITIAL);}
+  [^]          {} //ignore
 }
 
 
