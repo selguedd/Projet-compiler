@@ -692,7 +692,7 @@ class Main {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { Symbol symb= new Symbol(LexicalUnit.NUMBER,yyline, yycolumn,new Integer(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.NUMBER,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 39: break;
@@ -713,52 +713,52 @@ class Main {
             // fall through
           case 42: break;
           case 5: 
-            { Symbol symb= new Symbol(LexicalUnit.SEMICOLON,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.SEMICOLON,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 43: break;
           case 6: 
-            { Symbol symb= new Symbol(LexicalUnit.EQUAL,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.EQUAL,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 44: break;
           case 7: 
-            { Symbol symb= new Symbol(LexicalUnit.LEFT_PARENTHESIS,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.LEFT_PARENTHESIS,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 45: break;
           case 8: 
-            { Symbol symb= new Symbol(LexicalUnit.RIGHT_PARENTHESIS,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.RIGHT_PARENTHESIS,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 46: break;
           case 9: 
-            { Symbol symb= new Symbol(LexicalUnit.MINUS,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.MINUS,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 47: break;
           case 10: 
-            { Symbol symb= new Symbol(LexicalUnit.PLUS,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.PLUS,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 48: break;
           case 11: 
-            { Symbol symb= new Symbol(LexicalUnit.TIMES,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.TIMES,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 49: break;
           case 12: 
-            { Symbol symb= new Symbol(LexicalUnit.DIVIDE,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.DIVIDE,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 50: break;
           case 13: 
-            { Symbol symb= new Symbol(LexicalUnit.GREATER,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.GREATER,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 51: break;
           case 14: 
-            { Symbol symb= new Symbol(LexicalUnit.SMALLER,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.SMALLER,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 52: break;
@@ -773,42 +773,42 @@ class Main {
             // fall through
           case 54: break;
           case 17: 
-            { Symbol symb= new Symbol(LexicalUnit.BY,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.BY,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 55: break;
           case 18: 
-            { Symbol symb= new Symbol(LexicalUnit.IF,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.IF,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 56: break;
           case 19: 
-            { Symbol symb= new Symbol(LexicalUnit.DO,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.DO,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 57: break;
           case 20: 
-            { Symbol symb= new Symbol(LexicalUnit.ASSIGN,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.ASSIGN,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 58: break;
           case 21: 
-            { Symbol symb= new Symbol(LexicalUnit.DIFFERENT,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.DIFFERENT,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 59: break;
           case 22: 
-            { Symbol symb= new Symbol(LexicalUnit.TO,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.TO,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 60: break;
           case 23: 
-            { Symbol symb= new Symbol(LexicalUnit.GREATER_EQUAL,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.GREATER_EQUAL,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 61: break;
           case 24: 
-            { Symbol symb= new Symbol(LexicalUnit.SMALLER_EQUAL,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.SMALLER_EQUAL,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 62: break;
@@ -818,7 +818,7 @@ class Main {
             // fall through
           case 63: break;
           case 26: 
-            { Symbol symb= new Symbol(LexicalUnit.END,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.END,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 64: break;
@@ -828,7 +828,7 @@ class Main {
             // fall through
           case 65: break;
           case 28: 
-            { Symbol symb= new Symbol(LexicalUnit.FOR,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.FOR,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 66: break;
@@ -843,7 +843,7 @@ class Main {
             // fall through
           case 68: break;
           case 31: 
-            { Symbol symb= new Symbol(LexicalUnit.FROM,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.FROM,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 69: break;
@@ -853,12 +853,12 @@ class Main {
             // fall through
           case 70: break;
           case 33: 
-            { Symbol symb= new Symbol(LexicalUnit.READ,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.READ,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 71: break;
           case 34: 
-            { Symbol symb= new Symbol(LexicalUnit.BEG,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.BEG,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 72: break;
@@ -868,17 +868,17 @@ class Main {
             // fall through
           case 73: break;
           case 36: 
-            { Symbol symb= new Symbol(LexicalUnit.WHILE,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.WHILE,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 74: break;
           case 37: 
-            { Symbol symb= new Symbol(LexicalUnit.PRINT,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.PRINT,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 75: break;
           case 38: 
-            { Symbol symb= new Symbol(LexicalUnit.ENDWHILE,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());
+            { Symbol symb= new Symbol(LexicalUnit.ENDWHILE,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;
             } 
             // fall through
           case 76: break;
