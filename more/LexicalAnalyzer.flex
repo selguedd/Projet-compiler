@@ -21,7 +21,6 @@ Alpha          = {AlphaUpperCase}|{AlphaLowerCase}
 Numeric        = [0-9]
 AlphaNumeric   = {Alpha}|{Numeric}
 Number         = (([1-9][0-9]*)|0)
-BadNumber      = 0*[0−9]*
 Identifier     = {Alpha}{AlphaNumeric}*{Alpha}*
 CommentLine    ="co".*
 Endofline      ="\n"
@@ -40,7 +39,6 @@ Endofline      ="\n"
 "begin"		    {Symbol symb= new Symbol(LexicalUnit.BEG,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;}
 "end"	        {Symbol symb= new Symbol(LexicalUnit.END,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;}
 {Number}	    {Symbol symb= new Symbol(LexicalUnit.NUMBER,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;}
-{BadNumber}	    {Symbol symb= new Symbol(LexicalUnit.NUMBER,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;}
 ";"             {Symbol symb= new Symbol(LexicalUnit.SEMICOLON,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;}
 ":="            {Symbol symb= new Symbol(LexicalUnit.ASSIGN,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;}
 "("	            {Symbol symb= new Symbol(LexicalUnit.LEFT_PARENTHESIS,yyline, yycolumn,new String(yytext()));System.out.println(symb.toString());return symb;}
